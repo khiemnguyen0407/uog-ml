@@ -1,3 +1,6 @@
 .vscode/
-cpp/01-linear-regression-single-variable/project-01/build
-cpp/01-linear-regression-single-variable/project-01/example-app.cpp
+# cpp/01-linear-regression-single-variable/project-01/build
+# cpp/02-cuda-is-available/build
+cpp/**/build
+cpp/**/log_files
+cpp/**/submit.sh
