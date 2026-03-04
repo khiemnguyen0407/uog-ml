@@ -6,3 +6,5 @@ cpp/**/log_files
 cpp/**/submit.sh
 05-convolution-neural-networks/transfer-learning/hymenoptera_data/
 assignments/
+HPC-cognition-student-accounts.txt
+send_emails.ipynb
