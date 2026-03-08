@@ -1,0 +1,194 @@
+---
+title: "More on classes"
+# subtitle: "More on classes"
+author: |
+    Khiem Nguyen 
+    <br>Lecturer in Multiscale Materials
+    <br><khiem.nguyen@glasgow.ac.uk>
+author-meta: "Lecturer in Multiscale Materials"
+format: 
+    html:
+        theme: simple   # other themes: beige, blood, dark, dracula, league, moon, night, serif, simple, sky, solarized
+        mouse-wheel: true
+        highlight-style: github
+        slide-number: true
+        title-slide-style: pandoc
+        echo: true
+        code-overflow: wrap
+        code-line-numbers: true
+        code-block-bg: false          # <-- remove white background in code blocks
+        # code-block-border-left: false # optional: remove left border
+        # highlight-style: monokai      # good for dark images
+        toc: true
+        toc-depth: 1
+        toc-title: Presentation Outline
+        chalkboard: true
+        css: simple.css
+---
+
+# Quick intro to Pytorch
+
+## Torch has almost everything in NumPy: same same but different
+
+```{python}
+import torch
+import numpy as np
+
+a = np.ones(shape=(2, 3))       # shape
+t = torch.ones(size=(2, 3))     # size
+print(f"a = {repr(a)}")
+print(f"t = {repr(t)}")
+
+print(f"a.shape = {a.shape}")
+print(f"t.size() = {t.size()}")
+# but torch also has shape as an attribute
+print(f"t.shape = {t.shape}")
+```
+
+## Torch: Linear algebra
+
+&#10140;&nbsp; Torch has linear algebra just like NumPy
+```{python}
+A = torch.tensor([[3.0, 1.0], [1.0, 2.0]])
+b = torch.tensor([9.0, 8.0])
+
+# Solve for x
+x = torch.linalg.solve(A, b)
+
+print(f"Solution x: {x}") # Result will be [2.0, 3.0]
+```
+
+## Torch: Linear algebra and plot
+
+```{python}
+import torch
+import matplotlib.pyplot as plt
+
+# Generate 100 data points of 10-dimensional vectors
+torch.manual_seed(42)
+data = torch.randn(100, 10)
+
+# PCA Process: Center the data
+mean = torch.mean(data, dim=0)
+centered_data = data - mean
+
+# Use Singular Value Decomposition to get Principal Components
+# U: Left singular vectors, S: Singular values, V: Right singular vectors
+U, S, V = torch.linalg.svd(centered_data, full_matrices=False)
+
+# Project 10D data down to 2D using the first 2 Principal Components
+# V[:2] takes the two directions with the most variance
+projected_data = centered_data @ V[:2].t()
+print(f"projected_data.shape = {projected_data.shape}")
+# 5. Plotting
+plt.figure(figsize=(5, 5))
+plt.scatter(projected_data[:, 0], projected_data[:, 1], 
+            c='royalblue', edgecolors='white', s=60, alpha=0.8)
+
+# Adding labels and grid
+plt.title("2D Projection of 10D Data (100 Samples)", fontsize=14)
+plt.xlabel("Principal Component 1 (PC1)", fontsize=11)
+plt.ylabel("Principal Component 2 (PC2)", fontsize=11)
+plt.grid(True, linestyle='--', alpha=0.5)
+
+# Label a few points to see their "coordinates" in 2D
+for i in range(8):
+    plt.text(projected_data[i, 0], projected_data[i, 1], f"P {i}", fontsize=9)
+
+plt.show()
+```
+
+## Converting NumPy array to Torch tensor and vice versa
+
+```{python}
+np_array = np.random.rand(42, 42).astype(np.float32)
+
+# Convert to PyTorch Tensor
+torch_tensor = torch.from_numpy(np_array)
+# Alternative (creates a COPY, not shared memory)
+torch_tensor_copy = torch.tensor(np_array)
+```
+
+## Torch tensors can be defined on GPU, NumPy array cannot be
+
+&#10149;&nbsp; We can define Torch tensors on GPU, but we cannot define NumPy array on GPU.
+
+&#10149;&nbsp; There is an equivalent of NumPy, but on GPU: [CuPy](https://cupy.dev/)
+```{python}
+# Check if CUDA is available on your Ubuntu system
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(f"Using device: {device}")
+
+# Method A: Create directly on GPU (Faster, avoids a copy)
+x = torch.randn(100, 100, device=device)
+
+# Method B: Move an existing tensor to GPU
+y = torch.randn(100, 100)
+y = y.to(device)
+```
+
+# Autograd
+
+&#10149;&nbsp; Without [**Automatic Differentiation**]{style="color:red"}, Pytorch is not that special anymore.
+
+&#10149;&nbsp; Of course you have all the machine leanring modules, but what's the point if you have to implement all the back propagation on your owns.
+
+## Autograd: A simple example
+
+&#10140;&nbsp; Let us try to compute derivative of a rather simple function which is a composition of many transcendatal functions and arithmetic operations
+
+```{python}
+x = torch.linspace(0, 2*np.pi, steps=20, requires_grad=True)
+y = torch.sin(x)
+plt.figure(figsize=(4, 2.8))
+plt.plot(x.detach(), y.detach()), plt.grid(), plt.show()
+
+print(f"y = {y}")
+```
+
+Let us carry on with some simple arithmetic operations
+
+```{python}
+f = 2 * y
+print(f"f = {f}")
+g = f + 1
+print(f"g = {g}")
+```
+
+Finally, we compute one single aggregate
+```{python}
+out = g.sum()
+```
+
+## `grad_fn` attributes of `tensor`
+
+Each tensor is an object and it has an attribute to keep track how the back propagation should be done through it when one needs to traverse backward in the computational graph
+```{python}
+print("g:")
+print(g.grad_fn)
+print(g.grad_fn.next_functions)
+```
+
+If we want, we can go back all the way to the starting point
+```{python}
+print(g.grad_fn)
+print(g.grad_fn.next_functions[0][0])
+print(g.grad_fn.next_functions[0][0].next_functions[0][0])
+print(g.grad_fn.next_functions[0][0].next_functions[0][0].next_functions)
+
+# Compare with this
+print('\nf:')
+print(f.grad_fn)
+print('\ny:')
+print(y.grad_fn)
+print('\nx:')
+print(x.grad_fn)
+```
+
+## Using `backward()` method
+
+&#10149;&nbsp; We have constructed the following function:
+
+$$
+y = \sin(x), \quad f = 2 y, \quad g = f + 1 \qquad\Rightarrow\qquad f = 2\sin(x), \quad g = 2 \sin(x) + 1
+$$
