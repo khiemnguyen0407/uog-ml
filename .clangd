@@ -1,0 +1,5 @@
+CompileFlags:
+  Add:
+    - -I/home/cafesua/opt/libtorch/include
+    - -I/home/cafesua/opt/libtorch/include/torch/csrc/api/include
+    - -std=c++17
