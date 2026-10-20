@@ -1,0 +1,15 @@
+<!-- Extra contact details on the HTML title slide (the e-mail address comes from the author metadata;
+     the PDF version shows the same details in the Beamer `institute` field). -->
+<script>
+  (function () {
+    var slide = document.querySelector("section.quarto-title-block");
+    if (!slide) return;
+    var box = document.createElement("p");
+    box.className = "contact";
+    box.innerHTML =
+      "MS Teams: khiem.nguyen@glasgow.ac.uk<br>" +
+      "WhatsApp: +44 7729 532071 (emergency only)";
+    var date = slide.querySelector(".date");
+    slide.insertBefore(box, date);
+  })();
+</script>

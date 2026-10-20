@@ -1,0 +1,41 @@
+# Shared settings for every lecture in this folder.
+# `quarto render <lecture>.qmd` produces BOTH the HTML slides (for teaching) and the PDF handout.
+project:
+  type: default
+  render:
+    - "*.qmd"
+
+filters:
+  - filters/build.lua
+
+format:
+  revealjs:
+    theme: [default, styles/lecture.scss]
+    css: styles/fonts.css
+    width: 1280
+    height: 720
+    margin: 0.05
+    center: false
+    auto-stretch: false
+    slide-number: c/t
+    logo: figures/UoG_colour.png
+    transition: none
+    background-transition: none
+    hash-type: number
+    # chalkboard:
+    #   buttons: false
+    highlight-style: github
+    code-line-numbers: false
+    html-math-method: mathjax
+  beamer:
+    # The PDF is a compact handout for students: every slide appears once, in its final state
+    # (step-by-step builds and pauses are only shown in the HTML slides used for teaching).
+    classoption: [handout]
+    pdf-engine: xelatex
+    aspectratio: 169
+    fontsize: 10pt
+    theme: Caltech
+    themeoptions: [minimal]
+    fonttheme: serif
+    highlight-style: tango
+    include-in-header: styles/beamer-header.tex

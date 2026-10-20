@@ -1,0 +1,49 @@
+% Formally establish Beamer theme package
+\ProvidesPackage{beamerthemeCaltech}
+
+% --------  Invoke presentation mode  ----------------
+\mode<presentation>
+
+% --------  Set color, inner theme, frame title formats, etc.  ------------
+\usecolortheme{CaltechBeaver}
+\useinnertheme{circles}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+
+% --------  Define behavior for theme option "minimal"  -----------
+\DeclareOptionBeamer{minimal}{
+    \setbeamertemplate{frametitle}
+    {
+        \nointerlineskip
+        \begin{beamercolorbox}[sep=10pt,ht=26pt,wd=\paperwidth]{frametitle}
+            \vbox{}\vskip-2ex%
+            \strut\insertframetitle\strut
+            \vskip-0.8ex%
+        \end{beamercolorbox}
+    } % Reference: https://bloerg.net/2012/06/21/customizing-the-frametitle-of-beamer-presentation.html
+    % \logo{\includegraphics[width=2.4cm,height=0.75cm]{./figures/UoG_colour.eps}}
+    % \logo{\includegraphics[width=0.15\textwidth]{./figures/UoG_colour.eps}}
+    \titlegraphic{\includegraphics[width=0.25\textwidth]{./figures/UoG_colour.eps}}
+}
+
+% --------  Define behavior for theme option "sidebarleft"  -----------
+\DeclareOptionBeamer{sidebarleft}{
+    \useoutertheme[height=32pt,width=60pt,left]{sidebar}
+    \logo{\includegraphics[width=1.9cm]{./figures/UoG_colour.eps}}
+}
+
+% --------  Define behavior for theme option "sidebarright"  -----------
+\DeclareOptionBeamer{sidebarright}{
+    \useoutertheme[height=27pt,width=50pt,right]{sidebar}
+    \logo{\includegraphics[width=2.2cm,height=1.2cm]{./figures/UoG_colour.eps}}
+}
+
+\ProcessOptionsBeamer
+
+% --------  Set the font themes to be used here  -----------------
+%\usepackage{helvet}  % use Helvetica as text fonts
+
+% --------  Remove navigation symbols from appearing  ----------------
+\setbeamertemplate{navigation symbols}{}
+
+% --------  Invoke all mode
+\mode<all>

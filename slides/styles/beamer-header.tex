@@ -1,0 +1,16 @@
+% Shared Beamer settings for all lectures (included via include-in-header in _quarto.yml).
+% The colour names (Red, Blue, NavyBlue, ...) come from beamercolorthemeCaltechBeaver.sty.
+\usepackage{pifont}
+\setbeamercolor{title}{fg=Red}
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{subtitle}{series=\bfseries}
+\setbeamertemplate{itemize item}{\color{Blue}\ding{227}}
+\setbeamertemplate{itemize subitem}{\color{Blue}\textbullet}
+\setbeamertemplate{footline}{%
+  \hfill\usebeamerfont{footline}\usebeamercolor[fg]{footline}%
+  \insertframenumber/\inserttotalframenumber\hspace*{1.2em}\vspace*{0.7em}}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+% Slightly smaller verbatim/code so that short Python listings fit next to text
+\makeatletter
+\@ifundefined{Shaded}{}{\renewenvironment{Shaded}{\begin{snugshade}\footnotesize}{\end{snugshade}}}
+\makeatother

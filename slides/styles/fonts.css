@@ -1,0 +1,10 @@
+/* Atkinson Hyperlegible (SIL Open Font License 1.1, Braille Institute of America).
+   Shipped locally so the slides look the same offline, e.g. in a lecture theatre without internet. */
+@font-face { font-family: "Atkinson Hyperlegible"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Atkinson Hyperlegible"; font-style: italic; font-weight: 400; font-display: swap;
+  src: url("fonts/atkinson-hyperlegible-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Atkinson Hyperlegible"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Atkinson Hyperlegible"; font-style: italic; font-weight: 700; font-display: swap;
+  src: url("fonts/atkinson-hyperlegible-latin-700-italic.woff2") format("woff2"); }
