@@ -1,11 +1,13 @@
 /*-- scss:defaults --*/
-// Palette shared with the Beamer colour theme (beamercolorthemeCaltechBeaver.sty)
-$navy: #000080;
-$blue: #2171b5;
+// Colours of the figures (scripts/make_figures_*.py) and of the Beamer handout
+$navy: #0B2545;
+$ink: #1D2733;
+$blue: #1F6FB2;
+$accent: #F2A541;
 $red: #E53E30;
 $green: #00AD69;
 $purple: #652F6C;
-$band: #F0F0F0;
+$soft: #F4F6F9;
 
 $font-family-sans-serif: "Atkinson Hyperlegible", "Helvetica Neue", Arial, sans-serif;
 $font-family-monospace: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
@@ -15,53 +17,155 @@ $presentation-heading-font: $font-family-sans-serif;
 $presentation-heading-color: $navy;
 $presentation-heading-font-weight: 700;
 $presentation-heading-text-transform: none;
-$presentation-h1-font-size: 1.9em;
+$presentation-heading-letter-spacing: -0.01em;
+$presentation-h1-font-size: 2.0em;
 $presentation-h2-font-size: 1.2em;
 $presentation-h3-font-size: 1.0em;
 $presentation-title-slide-text-align: left;
-$body-color: #111111;
+$body-color: $ink;
 $link-color: $blue;
 $code-block-font-size: 0.8em;
 $code-color: $purple;
+$code-block-bg: $soft;
 
 /*-- scss:rules --*/
-// Frame-title band, mirroring the light-grey title bar of the Beamer version
-.reveal .slides section:not(.title-slide) > h2 {
-  background: $band;
-  color: $navy;
-  margin: -0.35em -0.9em 0.55em;
-  padding: 0.28em 0.75em;
+// ---------------------------------------------------------------- content slides
+// Slide titles: navy text with a short amber bar underneath
+.reveal .slides section:not(.quarto-title-block):not(.section-slide) > h2 {
+  margin: -0.2em 0 0.7em;
+  padding-bottom: 0.25em;
   line-height: 1.2;
+  position: relative;
+}
+.reveal .slides section:not(.quarto-title-block):not(.section-slide) > h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.6em;
+  height: 0.16em;
+  border-radius: 0.08em;
+  background: $accent;
 }
 
-.reveal .slide-number { color: $navy; font-size: 0.55em; }
-.reveal .footer { font-size: 0.45em; color: #555555; }
-
-// Title slide: same hierarchy as the Beamer title page
-.reveal .quarto-title-block h1.title { color: $red; font-size: 2.1em; }
-.reveal .quarto-title-block .subtitle { color: $navy; font-weight: 700; font-size: 1.1em; }
-.reveal .quarto-title-block .quarto-title-author-email,
-.reveal .quarto-title-block .contact { font-size: 0.62em; color: #333333; }
-.reveal .quarto-title-block .contact { margin-top: 0.4em; }
-
-// Section slides
-.reveal .slides section.title-slide.level1 h1,
-.reveal .slides section.level1 > h1 { color: $navy; }
-
-.reveal ul li::marker { color: $blue; }
+.reveal ul li::marker, .reveal ol li::marker { color: $blue; font-weight: 700; }
 .reveal strong { color: $navy; }
 .reveal .alert, .reveal em.alert { color: $red; font-style: normal; }
+
+// University logo on a white pill, so it stays legible on dark backgrounds
+.reveal .slide-logo {
+  background: #FFFFFF;
+  padding: 0.25em 0.45em;
+  border-radius: 0.4em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  max-height: 2.0em !important;
+}
+.reveal .slide-number { color: $navy; font-size: 0.55em; }
+.reveal .footer { font-size: 0.45em; color: #6B7684; }
+// on the dark title and section slides
+.reveal.has-dark-background .slide-number,
+.reveal.has-dark-background .footer { color: #C9D3DF; }
+.reveal.has-dark-background .slide-menu-button .fa-bars { color: #C9D3DF; }
+
+// Tables: navy header line and light zebra rows
+.reveal table { font-size: 0.8em; border-collapse: collapse; }
+.reveal table th { color: $navy; border-bottom: 2px solid $navy !important; }
+.reveal table th, .reveal table td { padding: 0.2em 0.6em; }
+.reveal table tbody tr:nth-child(even) { background: $soft; }
+
+// Code blocks: soft background, blue rule on the left
+.reveal div.sourceCode {
+  background: $soft;
+  border: none;
+  border-left: 0.22em solid $blue;
+  border-radius: 0.3em;
+}
+.reveal div.sourceCode pre { background: transparent; }
+
+.reveal .slides section div.callout { font-size: 0.9em; margin: 0.6em 0; border-radius: 0.35em; }
+.reveal .footnotes { font-size: 0.5em; }
+.reveal .small { font-size: 0.75em; }
+.reveal mjx-container[display="true"] { margin: 0.45em 0 !important; }
+
+// ---------------------------------------------------------------- title slide (photo background)
+.reveal .slides section.quarto-title-block {
+  text-align: left;
+  padding-left: 0.4em;
+}
+.reveal section.quarto-title-block h1.title {
+  color: #FFFFFF;
+  font-size: 2.3em;
+  max-width: 58%;
+  margin-bottom: 0.3em;
+}
+.reveal section.quarto-title-block .subtitle {
+  color: $accent;
+  font-weight: 700;
+  font-size: 1.05em;
+  max-width: 58%;
+}
+.reveal section.quarto-title-block .quarto-title-author-name,
+.reveal section.quarto-title-block .quarto-title-affiliation,
+.reveal section.quarto-title-block .date { color: #E8EDF3; }
+.reveal section.quarto-title-block .quarto-title-author-email,
+.reveal section.quarto-title-block .contact { font-size: 0.62em; color: #C9D3DF; }
+.reveal section.quarto-title-block a { color: #C9D3DF; }
+.reveal section.quarto-title-block .contact { margin-top: 0.4em; }
+
+// ---------------------------------------------------------------- section slides (filters/theme.lua)
+.reveal .slides section.section-slide {
+  text-align: left;
+}
+.reveal .slides section.section-slide > h1 {
+  color: #FFFFFF;
+  font-size: 2.2em;
+  max-width: 55%;
+  padding-bottom: 0.3em;
+  position: relative;
+}
+.reveal .slides section.section-slide > h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.2em;
+  height: 0.12em;
+  border-radius: 0.06em;
+  background: $accent;
+}
+
+// Text on section and part slides (e.g. the list of topics of a part)
+.reveal .slides section.section-slide p,
+.reveal .slides section.section-slide li {
+  color: #E8EDF3;
+  max-width: 55%;
+  font-size: 0.85em;
+  line-height: 1.45;
+}
+.reveal .slides section.part-slide > h1 { margin-top: 0.3em; }
 
 // Builds from filters/build.lua: hide a step as soon as a later step is shown
 .reveal .build-stack > .build-step:has(~ .build-step.visible) { visibility: hidden; }
 .reveal .build-stack > .build-step { width: 100%; }
 .reveal .build-stack img { margin: 0 auto; display: block; }
 
-.reveal table { font-size: 0.8em; }
-.reveal table th, .reveal table td { padding: 0.15em 0.6em; }
-.reveal .footnotes { font-size: 0.5em; }
-.reveal .small { font-size: 0.75em; }
-.reveal .slides section div.callout { font-size: 0.9em; margin: 0.6em 0; }
-
-// Display maths: slightly tighter than MathJax's default spacing
-.reveal mjx-container[display="true"] { margin: 0.45em 0 !important; }
+// Part title slides ("# Part 2a: ... {.part-slide}"): light green background (filters/theme.lua), dark text
+.reveal .slides section.part-slide { text-align: left; }
+.reveal .slides section.part-slide > h1 {
+  color: $navy;
+  font-size: 2.2em;
+  max-width: 75%;
+  padding-bottom: 0.3em;
+  position: relative;
+}
+.reveal .slides section.part-slide > h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.2em;
+  height: 0.12em;
+  border-radius: 0.06em;
+  background: $green;
+}
+.reveal .slides section.part-slide p { color: $ink; max-width: 75%; font-size: 0.85em; }
