@@ -805,7 +805,7 @@ Smaller batches give cheaper but noisier steps. They are essential for very larg
 4. The model predicts the constant $b$ for every input. $\partial J/\partial b = \frac1m\sum_i (b - y^{(i)}) = 0$ gives $b = \bar y$, the mean of the targets.
 :::
 
-# Part 2b: linear regression with many features {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 2b: linear regression with many features {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 Multiple features, vectorisation, gradient descent for $n$ features, the normal equation, feature scaling, learning curves, feature engineering, evaluation, scikit-learn

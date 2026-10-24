@@ -52,7 +52,7 @@ Speech, text, music, DNA and sensor signals come as **sequences**, whose length 
 :::
 ::::
 
-# Part 9a: the recurrent neural network {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 9a: the recurrent neural network {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 Sequence data, the recurrent neural network, backpropagation through time, types of RNNs
@@ -286,7 +286,7 @@ Recommended reading: A. Karpathy (2015), *The unreasonable effectiveness of recu
 5. The activations $\mathbf a^{\langle t\rangle}$ of all 15 time steps for all 32 sequences: shape $(32, 15, 20)$.
 :::
 
-# Part 9b: language models and sequence generation {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 9b: language models and sequence generation {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 Language models, generating sequences, character-level language models
@@ -532,7 +532,7 @@ The complete code (data encoding, training with validation, sampling) is in `scr
 5. It has memorised the training names: they have very high probability under the overfitted model, so sampling reproduces them.
 :::
 
-# Part 9c: GRU, LSTM, bidirectional and deep RNNs {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 9c: GRU, LSTM, bidirectional and deep RNNs {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 Long-range dependencies, the GRU, the LSTM, RNNs in PyTorch, bidirectional and deep RNNs, outlook

@@ -52,7 +52,7 @@ Images are large, and neighbouring pixels belong together. Convolutional neural 
 :::
 ::::
 
-# Part 8a: the convolution operation {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 8a: the convolution operation {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 Motivation, edge detection, the convolution operation, learned filters, padding and stride
@@ -273,7 +273,7 @@ i.e. one sequence is **flipped** before sliding. In 2D this means rotating the f
 5. The filter entries are learned; the network can learn the flipped filter just as well.
 :::
 
-# Part 8b: CNN layers and architectures {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 8b: CNN layers and architectures {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 Convolutions over volumes, pooling, a complete CNN, classic networks, why convolutions work
@@ -624,7 +624,7 @@ $$
 5. FC3 ($48{,}120$): it connects all $400$ flattened features to $120$ units.
 :::
 
-# Part 8c: CNN applications {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 8c: CNN applications {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 Transfer learning, data augmentation, face verification, neural style transfer
@@ -909,7 +909,9 @@ where $\alpha, \beta > 0$ balance content against style.
 1. Initialise $G$ randomly (or as a copy of $C$), e.g. $256 \times 256 \times 3$.
 2. Minimise $J(G)$ by gradient descent **with respect to the pixels of $G$**; the network's weights stay fixed.
 
-![Iterations of the optimisation (lecturer's implementation)](figures/cnn/cat+mosaic-05.png){width="18%"} ![](figures/cnn/cat+mosaic-10.png){width="18%"} ![](figures/cnn/cat+mosaic-15.png){width="18%"} ![](figures/cnn/cat+mosaic-60.png){width="18%"}
+<!-- ![Iterations of the optimisation (lecturer's implementation)](figures/cnn/cat+mosaic-05.png){width="18%"} ![](figures/cnn/cat+mosaic-10.png){width="18%"} ![](figures/cnn/cat+mosaic-15.png){width="18%"} ![](figures/cnn/cat+mosaic-60.png){width="18%"} -->
+
+![](figures/cnn-sketch/nst_iterations.png)
 
 ## Content cost
 

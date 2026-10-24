@@ -54,7 +54,7 @@ A neural network is built from many logistic-regression-like units. This lecture
 
 An optional appendix proves backpropagation with matrix calculus.
 
-# Part 7a: representation and forward propagation {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 7a: representation and forward propagation {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 From linear models to neural networks, handwritten digits, network representation, activation functions
@@ -430,7 +430,7 @@ Points inside a ring cannot be separated by a straight line: logistic regression
 5. (a) none (identity), (b) softmax, (c) sigmoid.
 :::
 
-# Part 7b: backpropagation, deep networks and training {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 7b: backpropagation, deep networks and training {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 Computational graphs, backpropagation, deep networks, vanishing gradients, neural networks in PyTorch
@@ -750,7 +750,7 @@ Documentation: <https://pytorch.org/docs/stable/nn.html>
 
 ## A network for handwritten digits
 
-![](figures/neural-network/mnist-digits.jpg){width="56%" fig-align="center"}
+![](figures/neural-network-sketch/mnist_digits.png){width="56%" fig-align="center"}
 
 $$
 {\color{red}{\text{Linear}}}[784, 512] \to {\color{blue}{\text{ReLU}}} \to {\color{red}{\text{Linear}}}[512, 512] \to {\color{blue}{\text{ReLU}}} \to {\color{red}{\text{Linear}}}[512, 10]
@@ -872,7 +872,7 @@ The same code on scikit-learn's $8\times 8$ digits (1,797 images; network $64 \t
 5. Each backward step through a sigmoid multiplies by $\sigma'(z) \le 1/4$ (and by the weights), so the gradient shrinks geometrically with depth.
 :::
 
-# Part 7c: the mathematics behind backpropagation {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 7c: the mathematics behind backpropagation {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 The chain rule for vectors and matrices, local and accumulated derivatives, a worked example, any number of layers

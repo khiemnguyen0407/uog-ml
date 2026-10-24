@@ -47,7 +47,7 @@ In classification the target is a **category**, not a number. Part 3a treats two
 :::
 ::::
 
-# Part 3a: binary classification {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 3a: binary classification {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 Classification, the logistic regression model, decision boundaries, the cost function, gradient descent, scikit-learn
@@ -607,7 +607,7 @@ model.score(X_test, y_test)          # 0.923: accuracy on the test set
 5. $f_{\mathbf w,b}$ is the sigmoid of $\mathbf w\cdot\mathbf x + b$ instead of $\mathbf w\cdot\mathbf x + b$ itself, so the errors $f - y$, and hence the gradients, are different.
 :::
 
-# Part 3b: multiclass classification {background-image="styles/backgrounds/title.jpg" background-size="cover" background-color="#0B2545" .part-slide}
+# Part 3b: multiclass classification {.part-slide}
 
 ::: {.content-visible when-format="revealjs"}
 Multiclass problems, the softmax model, the cross-entropy loss, scikit-learn, the confusion matrix, one-vs-rest
