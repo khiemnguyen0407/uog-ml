@@ -4,7 +4,7 @@ project:
   type: default
   render:
     - "*.qmd"
-  output-dir: ./output_slides
+  output-dir: ./to-read
 
 filters:
   - filters/build.lua
