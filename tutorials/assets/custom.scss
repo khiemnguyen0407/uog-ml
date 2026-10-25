@@ -1,0 +1,27 @@
+/*-- scss:defaults --*/
+// Colours and fonts for the HTML output (layered on top of the "cosmo" theme)
+$primary:              #003865;   // University of Glasgow blue
+$link-color:           #005398;
+$font-size-root:       17px;
+$code-color:           #7d2e9e;   // inline code
+$code-block-bg:        #f4f6f9;
+$code-block-border-left: #003865;
+$headings-color:       #003865;
+
+/*-- scss:rules --*/
+.course-banner {
+  background-color: #003865;
+  color: #ffffff;
+  padding: 0.45rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.02em;
+}
+.course-banner a { color: #ffffff; }
+
+// Slightly smaller code output so that printed tensors fit on one line
+.cell-output pre { font-size: 0.85em; }
+
+// Give figures produced by code a little breathing room
+.cell-output-display { margin-bottom: 1rem; }

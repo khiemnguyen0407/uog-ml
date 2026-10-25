@@ -1,0 +1,47 @@
+% =====================================================================
+%  LaTeX preamble shared by all PDF outputs (included via _quarto.yml).
+%  Edit the course name in the page header below.
+% =====================================================================
+
+% ---- Colours ---------------------------------------------------------
+\usepackage{xcolor}
+\definecolor{UofGBlue}{HTML}{003865}
+\definecolor{UofGGrey}{HTML}{6E6E6E}
+
+% ---- Fonts -----------------------------------------------------------
+% Headings in the University blue, slightly smaller than KOMA's default
+\addtokomafont{disposition}{\color{UofGBlue}}
+\addtokomafont{section}{\Large}
+\addtokomafont{subsection}{\large}
+\addtokomafont{subtitle}{\color{UofGGrey}\large}
+
+% ---- Title page -------------------------------------------------------------
+% KOMA-Script prints \publishers below the author and date in \maketitle.
+\publishers{\normalsize James Watt School of Engineering, University of Glasgow}
+
+% ---- Page header and footer --------------------------------------------
+\usepackage[headsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\ihead{\small\color{UofGGrey}Advanced Machine Learning}
+\ohead{\small\color{UofGGrey}Introduction to PyTorch}
+\cfoot*{\small\pagemark}
+\pagestyle{scrheadings}
+
+% ---- Code blocks and code output -----------------------------------------
+% Break long lines in code and in printed output instead of letting them
+% run into the margin, and use a slightly smaller font for both.
+\usepackage{fvextra}
+\RecustomVerbatimEnvironment{Highlighting}{Verbatim}{%
+  commandchars=\\\{\},breaklines,breakanywhere,fontsize=\small}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{%
+  breaklines,breakanywhere,fontsize=\small}
+
+% ---- Mathematics -----------------------------------------------------------
+\usepackage{amsmath,amssymb}
+
+% ---- Tables ---------------------------------------------------------------
+\renewcommand{\arraystretch}{1.15}
+
+% ---- Paragraphs -----------------------------------------------------------
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
