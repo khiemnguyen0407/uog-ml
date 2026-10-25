@@ -1,13 +1,20 @@
 .vscode/
-# cpp/01-linear-regression-single-variable/project-01/build
-# cpp/02-cuda-is-available/build
-cpp/**/build
-cpp/**/log_files
-cpp/**/submit.sh
-05-convolution-neural-networks/transfer-learning/hymenoptera_data/
-HPC-cognition-student-accounts.txt
-send_emails.ipynb
-assignments
-assignments/solution-01
-assignments/assignment-01/brain-tumor-data
+figures/
+00-libtorch/
+00-pytorch/
+01-linear-regression-single-variable/
+02-linear-regression-multiple-variables/
+03-logistic-regression/
+04-multilayer-perceptrons/
+05-convolution-neural-networks/
+06-recurrent-neural-networks/
+advanced-topics/
+pytorch-notebooks/
+references/
+cpp/
+
+slides_original/
+
 advanced-topics/**/build
+
+# figures/
