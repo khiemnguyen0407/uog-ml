@@ -4,6 +4,7 @@ project:
   type: default
   render:
     - "*.qmd"
+  output-dir: ./output_slides
 
 filters:
   - filters/build.lua
@@ -24,6 +25,7 @@ format:
     hash-type: number
     # chalkboard:
     #   buttons: false
+    embed-resources: true
     highlight-style: github
     code-line-numbers: false
     html-math-method: mathjax
